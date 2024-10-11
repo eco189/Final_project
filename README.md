@@ -1,33 +1,20 @@
-# Проект 1. Анализ резюме на hh.ru
+# Итоговый проект. Агентство недвижимости
 
 ## Оглавление  
-[1. Описание проекта](https://github.com/eco189/Final_project/blob/main/README.md#Описание-проекта)  
-[2. Какой кейс решаем?](https://github.com/eco189/Final_project/blob/main/README.md#Какой-кейс-решаем)  
-[3. Краткая информация о данных](https://github.com/eco189/Final_project/blob/main/README.md#Краткая-информация-о-данных)  
-[4. Этапы работы над проектом](https://github.com/eco189/Final_project/blob/main/README.md#Этапы-работы-над-проектом)  
-[5. Результат](https://github.com/eco189/Final_project/blob/main/README.md#Результат)    
-[6. Выводы](https://github.com/eco189/Final_project/blob/main/README.md#Выводы) 
+[1. Описание проекта](https://github.com/eco189/Final_project/blob/main/README.md#Описание-проекта)    
+[2. Краткая информация о данных](https://github.com/eco189/Final_project/blob/main/README.md#Краткая-информация-о-данных)  
+[3. Этапы работы над проектом](https://github.com/eco189/Final_project/blob/main/README.md#Этапы-работы-над-проектом)  
+[4. Результат](https://github.com/eco189/Final_project/blob/main/README.md#Результат)    
+[5. Инструкция по запуску Docker-контейнера](https://github.com/eco189/Final_project/blob/main/README.md#Инструкция-по-запуску-Docker-контейнера) 
 
 ### Описание проекта    
-Компания HeadHunter хочет построить модель, которая бы автоматически определяла примерный уровень заработной платы, подходящей пользователю, исходя из информации, которую он указал о себе.
+Агентству недвижимости необходимо разработать сервис для предсказания стоимости домов на основе истории предложений.
 
 :arrow_up:[к оглавлению](https://github.com/eco189/Final_project/blob/main/README.md#Оглавление)
 
-
-### Какой кейс решаем?    
-Необходимо выполнить преобразования с данными, что бы они были применимы для построения модели.
-
-:arrow_up:[к оглавлению](https://github.com/eco189/Final_project/blob/main/README.md#Оглавление)
-
-**Условия задания:**  
-- Каждая часть состоит из блока практических заданий, которые необходимо выполнить в jupyter-ноутбуке.
-- Ноутбук необходимо оформить на основе предоставленного шаблона и требований.
-- Отправить свой код ментору для code-ревью.
 
 ### Краткая информация о данных
-Данные о резюме находятся в хранилище Google Диск. Название файла: dst-3.0_16_1_hh_database.csv Разделитель: sep=';' Ссылка: https://drive.google.com/file/d/1X0DHXtnNS58Y3CPS78gjAI49QetcHQeY/view?usp=sharing
-
-Данные о курсах валют лежат в хранилище Google Диск. Название файла: ExchangeRates.csv Разделитель: sep = ',' Ссылка: https://drive.google.com/file/d/1iTqV3lR146aPoHWXGCr8Ir1PjzzZjiZW/view?usp=sharing
+Данные о домах находятся в хранилище Google Диск. Название файла: data.csv Разделитель: sep=',' Ссылка: https://drive.google.com/file/d/11-ZNNIdcQ7TbT8Y0nsQ3Q0eiYQP__NIW/view?pli=1
   
 :arrow_up:[к оглавлению](https://github.com/eco189/Final_project/blob/main/README.md#Оглавление)
 
@@ -36,18 +23,26 @@
 - Преобразование данных
 - Исследование зависимостей в данных
 - Очистка данных
+- Обучение модели
 
 :arrow_up:[к оглавлению](https://github.com/eco189/Final_project/blob/main/README.md#Оглавление)
 
 
 ### Результат:
-- Был получен датафрейм готовый к дальнейшему построению модели.   
-- Получена практика и опыт в работе с данными на языке Python в среде VS Code.
+- Получена обученная модель. Ошибка МАРЕ на тестовой выборке составила 16,54 %.   
+- На основе данной модели разработан сервис для предсказания стоимости домов.
+- Docker-контейнер с данным сервисом был собран и загружен на Docker Hub.
 
 :arrow_up:[к оглавлению](https://github.com/eco189/Final_project/blob/main/README.md#Оглавление)
 
 
-### Выводы:  
-Данные содержали выбросы и аномалии, без преобразований выполненных в проекте использование данных могло бы привести к неправильным результатам.
+### Инструкция по запуску Docker-контейнера:  
+1. Скачать образ с Docker Hub с помощью команды:    
+docker pull eco189/final_project_server_image  
+2. Запустить контейнер командой:  
+docker run -d -p=80:80 eco189/final_project_server_image  
+3. Через браузер зайдём по адресу http://localhost
+4. В поля в левой колонке вводим данные, выбирая из выпадающего списка, в поля в правой колонке вводим данные вручную.
+4. Нажимаем на "Predict" и получаем предсказание цены.
 
 :arrow_up:[к оглавлению](https://github.com/eco189/Final_project/blob/main/README.md#Оглавление)
